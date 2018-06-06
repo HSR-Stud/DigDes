@@ -1,4 +1,4 @@
-# DigDes - Funktionen mehrerer Variablen
+# DigDes
 
 Stand FS 2018
 
