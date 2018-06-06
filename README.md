@@ -1,3 +1,5 @@
-# FuVar - Funktionen mehrerer Variablen
+# DigDes - Funktionen mehrerer Variablen
 
-[Matthias Diethelm](https://github.com/mdiethelm)
+Stand FS 2018
+
+Auf Basis der Formelsammlung DT2 - Version CG-SK
