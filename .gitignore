@@ -1,0 +1,9 @@
+tmp/*
+DigDes.pdf
+*.synctex.gz
+/*.aux
+/*.log
+/*.out
+/*.dvi
+/*.tps
+/*.tcp
