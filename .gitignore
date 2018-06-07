@@ -2,7 +2,7 @@ tmp/*
 DigDes.pdf
 *.synctex.gz
 /*.aux
-/*.log
+*.log
 /*.out
 /*.dvi
 /*.tps
