@@ -2,9 +2,6 @@
 -- Darstellung mit Aufzaehltyp 
 type STATE_TYPE is (S0, S1, ..., Sn);
 signal PRESENT_STATE, NEXT_STATE: STATE_TYPE;
-
-
-
 	
 --Explizite Form:
 --Mit ENUM_ENCODING

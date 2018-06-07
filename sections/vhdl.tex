@@ -137,30 +137,32 @@
 				abgebildet
 				
 
-	\subsection{Signalzuweisung}
-		Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuweisungen sind immer aktiv. Signale k"onnen auf verschiedene Arten zugewiesen werden:
+	
 		\begin{multicols}{2}
+		\subsection{Signalzuweisung}
+		Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuweisungen sind immer aktiv. Signale k"onnen auf verschiedene Arten zugewiesen werden:
 			\lstinputlisting[language=vhdl,tabsize=2]{code/signalzuweisung.vhd}
+			\vfill\null
+			\columnbreak
+			\subsubsection{Aggregat}
+			Ein Aggregat ist ein Klammerausdruck, der mehrere Einzelelemente zu einem 
+			Vektor zusammenfasst.
+				\lstinputlisting[language=vhdl,tabsize=2]{code/aggregat.vhd}
 		\end{multicols}
 
 		
-		\subsubsection{Aggregat}
-			Ein Aggregat ist ein Klammerausdruck, der mehrere Einzelelemente zu einem 
-			Vektor zusammenfasst.
-			\begin{multicols}{2}
-			\lstinputlisting[language=vhdl,tabsize=2]{code/aggregat.vhd}
-			\end{multicols}
+			
 		
 
 \newpage
-	\subsection{Prozesse}
+	
 		\begin{multicols}{2}
+		\subsection{Prozesse}
 			\begin{itemize}
 			  \setlength{\itemsep}{1pt}
   			  \setlength{\parskip}{0pt}
   			  \setlength{\parsep}{0pt}
-				\item Prozesse werden durch "Anderungen der Signale in der 	
-					Sensitivit"atsliste aktiviert und ausgef"ahrt.
+				\item Prozesse werden durch Änderungen der Signale in der Sensitivitätsliste aktiviert und ausgeführt.
 				\item Prozesse verhalten sich gegen aussen nebenl"aufig, innerhalb werden 
 					Anweisungen sequentiell abgearbeitet
 				\item \textbf{Selektive und bedingte Signalzuweisungen sind verboten.}
@@ -177,46 +179,44 @@
 				\item Ohne Sensitivitätsliste nur in Simulation erlaubt
 			\end{itemize}
 			\includegraphics[width=0.5\textwidth]{pics/syntaxprozess}
-		\end{multicols}
-		\subsubsection{Variablen}
-			\begin{multicols}{2}
-				\begin{itemize}
+			\columnbreak
+			\subsubsection{Variablen}			
+			\begin{itemize}
 					\itemsep0em
 					\item Variablen werden im Deklarationsteil des Prozesses deklariert 
 						und nur in diesem Prozess sichtbar.
 					\item Zugewiesener Wert kann sofort abgefragt werden
 					\item Wertzuweisung durch Operator \textbf{:=} (nicht $<$=)
-				\end{itemize}
-			
-				\begin{itemize}
-				\itemsep0em
 					\item Vor Verwendung ein aktueller Wert (evt. Default-Wert) zuweisen, sonst entsteht Latch
 				\end{itemize}
 				\lstinputlisting[language=vhdl,tabsize=2]{code/variable.vhd}
-			\end{multicols}
-
-		\subsubsection{Signalzuweisung durch Prozesse}
-			\begin{multicols}{2}
+				
+				\subsubsection{Signalzuweisung durch Prozesse}
 				\lstinputlisting[language=vhdl,tabsize=2]{code/kontrollstruktur.vhd}
-			\end{multicols}
+		\end{multicols}
 
 	
 			\begin{multicols}{2}
 			\subsection{Sequentielle Systeme}
 		\subsubsection{Flankenerfassung}
 				\lstinputlisting[language=vhdl,tabsize=2]{code/flanke.vhd}
-			
+		\vfill\null
+				\columnbreak	
 		\subsubsection{Zustandscodierung}
-		
 				\begin{itemize}
-					\item Die Deklaration der Zustandscodierung erfolgt im Deklarationsteil 						der Architektur
+				\itemsep0em
+					\item Die Deklaration der Zustandscodierung erfolgt im Deklarationsteil der Architektur
 					\item Bei expliziten Zustandscodierung muss die Zustandcodierung der 
 						IDE auf $"$User$"$ umgestellt werden.
 				\end{itemize}
-				\columnbreak
+				
 				\lstinputlisting[language=vhdl,tabsize=2]{code/zustandscode.vhd}
 			\end{multicols}
 			\begin{multicols}{2}
+			
+			
+			\clearpage
+			
 		\subsubsection{FSM in 3-Prozess Struktur}
 			Die Zustandsmaschine wird in 3 Prozesse aufgeteilt. Diese Prozesse werden ganz 
 			einfach einzeln im Anwendungsteil der Architektur implementiert und arbeiten 
@@ -240,15 +240,15 @@
 					Dieser kombinatorische Teil ist nicht abh"angig von der Struktur der 
 					FSM.
 					\lstinputlisting[language=vhdl,tabsize=2]{code/nextstatelogic.vhd}
-				\columnbreak
 				\paragraph{State\_Register}  
 					Dieser kombinatorische Teil ist nicht abh"angig von der Struktur der 
 					FSM und sieht bei allen (fast) FSM immer gleich aus.
 					\lstinputlisting[language=vhdl,tabsize=2]{code/stateregister.vhd}
-			\end{multicols}
-	
-	\begin{multicols}{2}
-		\subsection{IEEE 1164 Logiksystem}
+					
+					\vfill\null
+					\columnbreak
+					
+					\subsection{IEEE 1164 Logiksystem}
 			Durch Einbinden der ieee.std\_logic\_1164 Library werden die std\_logic, sowie 
 			std\_ulogic Datentypen verf"ugbar. Damit verbunden ist auch die 9-wertige Logik:
 				\includegraphics[width=0.49\textwidth]{pics/ieee1164logicsystem}
@@ -258,10 +258,11 @@
 			\begin{center}
 				\includegraphics[width=0.48\textwidth]{pics/typeconversion}
 			\end{center}
-			%\lstinputlisting[language=vhdl,tabsize=2]{code/typeconversion.vhd}
+			
 			\paragraph{TriStateLogic}
 			\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
-	\end{multicols}
+			\end{multicols}
+	
 	\pagebreak
 	\subsection{Arithmetik}
 		\begin{multicols}{2}
@@ -273,7 +274,7 @@
 			\includegraphics[width=0.25\textwidth]{pics/arithoperator}
 		\end{center}
 	\end{multicols}
-
+	\hrule
 
 			\begin{multicols}{2}
 				\subsection{Simulation}
@@ -318,19 +319,25 @@
 %				\paragraph{Stimulusgenerator} 
 %					\lstinputlisting[language=vhdl,tabsize=2]{code/stimulusgenerator.vhd}
 %			\end{multicols}	
-
-			\paragraph{Response-Monitor (inkl. Assert)} $\;$ \\
+		\begin{minipage}{0.63\textwidth}
+			\paragraph{Response-Monitor (inkl. Assert)}
 				\lstinputlisting[language=vhdl,tabsize=2]{code/responsemonitor.vhd}
-			
-		\begin{multicols}{2}
-			\subsubsection{For-Loop} % Evt. als paragraph, wenn Platzmangel
-				For-Loops finden Verwendung in der Simulation, oftmals in Verbindung 
-				mit wait-Statemants und daher ohne Sensititvit"atsliste.\\
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.35\textwidth}
+		\subsubsection{For-Loop} % Evt. als paragraph, wenn Platzmangel
+				For-Loops finden Verwendung in der \colorbox{yellow}{Simulation}, oftmals in Verbindung mit wait-Statemants und daher ohne Sensititvit"atsliste.\\
 				Sie k"onnen aber auch synthetisiert werden, daf"ur muss aber der range 
 				endlich sein.
 				\lstinputlisting[language=vhdl,tabsize=2]{code/forloop.vhd}
+		\end{minipage}
+			
+			
+		%\begin{multicols}{2}
+			\begin{minipage}{0.49\textwidth}
 			\subsubsection{Verz"ogerungszeiten}  % Evt. als paragraph, wenn Platzmangel
 				\begin{itemize}
+				\itemsep0em
 					\item $\Delta$-Time $\rightarrow$ funktioneller Zusammenhang 
 						zwischen Ursache/Wirkung (automatisch)
 					\item inertial delay (Tr"agheit) $\rightarrow$Ausgang "andert erst, 
@@ -343,8 +350,15 @@
 						\lstinputlisting[language=vhdl,tabsize=2]
 							{code/transport.vhd}
 				\end{itemize}
-		\end{multicols}
-
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.49\textwidth}
+			
+			\end{minipage}
+			
+			\hrule
+		%\end{multicols}
+		\begin{multicols}{2}
 	\subsection{Generic}
 		$\rightarrow$ Re-Use! So kann VHDL mit Generic, Parameter an ein Modell 
 		"ubergeben.\ Dabei wird der Parameter wie eine Konstante im Anweisungsteil 
@@ -352,30 +366,16 @@
 		Daf"ur muss in jeder Schnittstellenbeschreibung der Generic-Block eingbaut werden:
 		\lstinputlisting[language=vhdl,tabsize=2]{code/generic.vhd}
 		Und bei der Instanzierung wird mit generic map der Parameter-Wert gesetzt.
-		\begin{multicols}{2}
-			\subsubsection{Beispiel f"ur Implementation}
+
+\vfill\null
+\columnbreak
+			\subsubsection{Beispiel für Implementation}
 				Die Implemantation geschieht wie auch bei den anderen 
 				Komponenten meistens in einer seperaten Datei, einfach enth"alt hier die 
 				entity noch ein generic.
 				\lstinputlisting[language=vhdl,tabsize=2]{code/generic_dekleration.vhd}
-			\subsubsection{Beispiel f"ur Instanzierung}
+			\subsubsection{Beispiel für Instanzierung}
 				Auch hier wird wie gewohnt zu erst die Komponente deklariert und 
 				anschliessend im Anwendungsteil instanziert.
 				\lstinputlisting[language=vhdl,tabsize=2]{code/generic_instanzierung.vhd}
 		\end{multicols}
-		
-%
-%\subsection{VHDL Code Example}
-%	\begin{center}
-%		\includegraphics[width=0.5\textwidth]{pics/vhdlcodeexampleschematic.png}
-%	\end{center}
-%	\begin{multicols}{2}
-%		\lstinputlisting[language=vhdl,tabsize=2]{code/vhdlcodeexample.vhd}
-%	\end{multicols}
-%
-%
-%
-%
-%\begin{center}
-%\includegraphics[width=0.5\textwidth]{pics/designprocess}
-%\end{center}

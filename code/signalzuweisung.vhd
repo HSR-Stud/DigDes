@@ -28,7 +28,6 @@ begin
 	X <= (A and S) or (B(1) and not S);
 end UNBEDINGT;
 
-
 --Bedingte Signalzuweisung
 architecture BEDINGT of ... is
 begin
