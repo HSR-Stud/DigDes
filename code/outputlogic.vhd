@@ -4,11 +4,12 @@ begin
 	...
 end process;
 
+
 -- Moore-Struktur
 Output_Logic: process(PRESENT_STATE)
 begin
 	...
-end process;
+end process;	
 -- Medwedjew-Struktur
-Output_Logic:
+Output_Logic: 
 	y <= PRESENT_STATE;
