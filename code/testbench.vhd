@@ -1,4 +1,3 @@
--- Library declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -9,11 +8,11 @@ end edgedetpos_tb;
 -- Architecture declaration
 architecture testbench of edgedetpos_tb is
 -- Konstanten
-	constant f    : integer := 1000;    	
+	constant f    : integer := 1000;
 	constant T    : time    := 1 sec / f;
--- TB interne Signale	
-	signal clk_tb     : std_ulogic; -- Master sim clock 
-	signal reset_tb    : std_ulogic; -- Reset signal sim 
+-- TB interne Signale
+	signal clk_tb     : std_ulogic; -- Master sim clock
+	signal reset_tb    : std_ulogic; -- Reset signal sim
 	signal inp_tb     : std_ulogic;
 	signal oup_tb     : std_ulogic;
 	signal oup_exp_tb : std_ulogic;
@@ -28,13 +27,13 @@ architecture testbench of edgedetpos_tb is
 	-- for all: entity name use entity entity name (architecture name)
 	for all: edgedetpos use entity work.edgedetpos(behavioral);
 begin
-	-- Device unter test port mapping
+	-- Device under test port mapping
 	dut : edgedetpos
 		port map(clk  => clk_tb,
 			     reset => reset_tb,
 			     inp  => inp_tb,
 			     oup  => oup_tb);
-	-- Clock generator		
+	-- Clock generator
 	stimuli_clk : process
 	begin
 		clk_tb <= '0';
@@ -42,7 +41,7 @@ begin
 		clk_tb <= '1';
 		wait for T / 2;
 	end process;
-	-- Reset generator. 	
+	-- Reset generator.
 	stimuli_reset : reset_tb <= '1', '0' after 3 ms;
 	-- Generator for stimuli (== inputs)
 	stimuli_inp : process
@@ -62,7 +61,7 @@ begin
 -- und so weiter
 		wait;
 	end process;
-	-- Evaluation		
+	-- Evaluation
 	evaluation : process
 	begin
 		wait until rising_edge(clk_tb);

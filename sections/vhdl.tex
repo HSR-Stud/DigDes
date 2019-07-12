@@ -1,5 +1,6 @@
-\section{VHDL}
-\begin{minipage}{0.4\textwidth}
+\vspace{\baselineskip}
+\begin{minipage}[t]{0.59\textwidth}
+	\section{VHDL}
 	Die vollst"andige Beschreibung des Designs (Grundstruktur) besteht aus:
 	\begin{description}
 	\setlength{\itemsep}{0pt}
@@ -9,24 +10,19 @@
 		\item [entity:] Schnittstellenbeschreibung
 		\item [architecture:] Architekturbeschreibung
 	\end{description}
-	\vfill\null
-\end{minipage}
-\begin{minipage}{0.59\textwidth}
 	\subsection{Key Concepts}
-		\begin{tabular}{ll}
-			Key Concept I: & Schaltungshierarchie und Verbindung von Sub-Bl"ocken\\
-			& (hierarchy and connectivity).\\
-			Key Concept II: & Nebenl"aufige (concurrent) Prozesse und Prozess-\\
-			& Interaktion.\\
-			Key Concept III: & Modellierung des elektrischen Verhaltens von Signalen.\\
-			Key Concept IV: & Event-Based time: Simulationsmodell, das auf Events\\
-			& und nicht auf kontinuierlicher Zeit beruht.\\
-			Key Concept V: & Parametrisierung von Modellen.
-		\end{tabular}
-	\vfill\null
+	\begin{tabular}{ll}
+		Key Concept I: & Schaltungshierarchie und Verbindung von Sub-Bl"ocken\\
+		& (hierarchy and connectivity).\\
+		Key Concept II: & Nebenl"aufige (concurrent) Prozesse und Prozess-\\
+		& Interaktion.\\
+		Key Concept III: & Modellierung des elektrischen Verhaltens von Signalen.\\
+		Key Concept IV: & Event-Based time: Simulationsmodell, das auf Events\\
+		& und nicht auf kontinuierlicher Zeit beruht.\\
+		Key Concept V: & Parametrisierung von Modellen.
+	\end{tabular}
 \end{minipage}
-
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}[t]{0.3\textwidth}
 \subsection{Identifier}
 		\begin{itemize}
 			\setlength{\itemsep}{0pt}
@@ -38,24 +34,25 @@
 				\item Eigene Identifier $\rightarrow$ GROSSBUCHSTABEN
 				\item Library Identifier $\rightarrow$ kleinbuchstaben
 		\end{itemize}
-\end{minipage}	
-\begin{minipage}{0.59\textwidth}
-\subsection{Bibliotheken (library)}
-		\begin{tabular}{ll}
-			work & Default-Bibliothek des Benutzers \\
-			std & standard (Vordefinierte Datentypen und Funktionen),\\
-			& textio (Text -  Filehandling)\\
-			work und std &m"ussen nicht deklariert werden (automatisch eingebunden)\\
-			ieee & std\_logic\_1164: Datentypen f"ur mehrwertiges Logiksystem\\
-			& numeric\_std: Mathe-Bibliothek f"ur std\_logic
-		\end{tabular}
+		\vfill\null
 \end{minipage}
 	
-\vspace{-\baselineskip}
-\begin{multicols}{2}
+\begin{minipage}[t]{0.59\textwidth}
+	\subsection{Bibliotheken (library)}
+	\begin{tabular}{ll}
+		work & Default-Bibliothek des Benutzers \\
+		std & standard (Vordefinierte Datentypen und Funktionen),\\
+		& textio (Text -  Filehandling)\\
+		work und std &m"ussen nicht deklariert werden (automatisch eingebunden)\\
+		ieee & std\_logic\_1164: Datentypen f"ur mehrwertiges Logiksystem\\
+		& numeric\_std: Mathe-Bibliothek f"ur std\_logic
+	\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
 	\lstinputlisting[language=VHDL,tabsize=2]{code/header.vhd}
-\end{multicols}
-Mit \textbf{use} wird Bibliotheksinhalt im ganzen VHDL Modul sichtbar
+	Mit \textbf{use} wird Bibliotheksinhalt im ganzen VHDL Modul sichtbar
+\end{minipage}
 
 \subsection{Schnittstellenbeschreibung (entity)}
 	Die einzelnen Bl"ocke einer VHDL-Beschreibung kommunizieren "uber ihre 
@@ -88,55 +85,49 @@ Mit \textbf{use} wird Bibliotheksinhalt im ganzen VHDL Modul sichtbar
 	\end{tabular}
 \end{multicols}
 	
-	
-\subsection{Architekturbeschreibung (architecture)}
+\begin{multicols}{2}	
+	\subsection{Architekturbeschreibung (architecture)}
 	Die Architektur legt die Funktion eines Blocks fest. Dabei kann eine entity mehrere architectures besitzen. Für die Simulation und Synthese müssen aber alle nicht verwendeten Architekturen auskommentiert werden.
 	\lstinputlisting[language=VHDL,tabsize=2]{code/architecture.vhd}
-
-\begin{multicols}{2}
-	\subsubsection{Signaldeklaration}
-	 Hier werden die Signale, die Innerhalb der Architektur verwendet werden, deklariert.
-		\lstinputlisting[language=vhdl,tabsize=2]{code/signal.vhd}
 	\vfill\null
 	\columnbreak
+
+	\subsubsection{Signaldeklaration}
+	 Hier werden die Signale, die Innerhalb der Architektur verwendet werden, deklariert.
+	\lstinputlisting[language=vhdl,tabsize=2]{code/signal.vhd}
+
 	\subsubsection{Komponentendeklaration}
 		Mit Hilfe des Schl"usselwortes \textbf{component} erfolgt die Deklaration von Komponenten, "ahnlich wie einer \textbf{entity}.\\
 		\lstinputlisting[language=vhdl,tabsize=2]{code/component.vhd}
 \end{multicols}
 
-\newpage	
-\subsubsection{Anweisungsteil}
-	Im Anweisungsteil wird das Verhalten beschrieben. Dabei werden verschiedene Modellierungsstile unterschieden.
-	
+\vspace{-\baselineskip}
 \begin{multicols}{2}
+	\subsubsection{Anweisungsteil}
+	Im Anweisungsteil wird das Verhalten beschrieben. Dabei werden verschiedene Modellierungsstile unterschieden.
 	\paragraph{Strukturmodell (Instanzierung)}
 	Die Ein- und Ausgänge von Komponenten, die in einer Bibliothek abgelegt sind werden durch lokale Signale miteinander verbunden $\rightarrow$ Es entsteht eine Netzliste. 
 	\lstinputlisting[language=vhdl,tabsize=2]{code/instanzierung.vhd}
-	
+	\columnbreak
 	\paragraph{Datenflussmodell}
 	Es werden logische Grundfunktionen verwendet.
 	Logikoperatoren f"ur bit, bit\_vector, boolean: \textbf{not, and, or, nand, nor, xor, xnor}. Wenn auf bit\_vector angewendet, dann muss Bitbreite von beiden Operanden gleich sein.
 	\lstinputlisting[language=vhdl,tabsize=2]{code/datenfluss.vhd}
-			
-\end{multicols}
-
-\paragraph{Verhaltensmodell} ($\rightarrow$ H"aufigster Modellierungsstil.) 
-	Die Modellierung findet durch Sprachelemente "ahnlich wie in einer prozeduralen Programmiersprache statt.\\
-	Dabei werden abgeschlossene Hardware-Bl"ocke durch Prozesse 
+	\paragraph{Verhaltensmodell} ($\rightarrow$ H"aufigster Modellierungsstil.) 
+	Die Modellierung findet durch Sprachelemente "ahnlich wie in einer prozeduralen Programmiersprache statt. Dabei werden abgeschlossene Hardware-Bl"ocke durch Prozesse 
 	abgebildet.
-				
+\end{multicols}
+			
 \begin{multicols}{2}
-\subsection{Signalzuweisung}
-Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuweisungen sind immer aktiv. Signale k"onnen auf verschiedene Arten zugewiesen werden:
+	\subsection{Signalzuweisung}
+	Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuweisungen sind immer aktiv. Signale k"onnen auf verschiedene Arten zugewiesen werden:
 	\lstinputlisting[language=vhdl,tabsize=2]{code/signalzuweisung.vhd}
-	\vfill\null
-	\columnbreak
+%	\vfill\null
+%	\columnbreak
 	\subsubsection{Aggregat}
 	Ein Aggregat ist ein Klammerausdruck, der mehrere Einzelelemente zu einem Vektor zusammenfasst.
 		\lstinputlisting[language=vhdl,tabsize=2]{code/aggregat.vhd}
 \end{multicols}
-
-\newpage
 	
 \begin{multicols}{2}
 	\subsection{Prozesse}
@@ -170,7 +161,9 @@ Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuwei
 	\subsubsection{Signalzuweisung durch Prozesse}
 	\lstinputlisting[language=vhdl,tabsize=2]{code/kontrollstruktur.vhd}
 \end{multicols}
-		
+
+\newpage
+
 \begin{multicols}{2}
 	\subsection{Sequentielle Systeme}
 	\subsubsection{Flankenerfassung}
@@ -179,77 +172,72 @@ Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuwei
 	\begin{itemize}
 	\itemsep0em
 		\item Die Deklaration der Zustandscodierung erfolgt im Deklarationsteil der Architektur.
-		\item Bei expliziter Zustandscodierung muss die Zustandscodierung der IDE auf $"$User$"$ umgestellt werden.
+		\item Bei expliziter Zustandscodierung muss diese in der IDE auf $"$User$"$ umgestellt werden.
 	\end{itemize}
 	\lstinputlisting[language=vhdl,tabsize=2]{code/zustandscode.vhd}
-\end{multicols}
-			
-			%\clearpage
-\begin{multicols}{3}
+	\vfill\null
+	\columnbreak
 	\subsubsection{FSM in 3-Prozess Struktur}
 	Die Zustandsmaschine wird in 3 Prozesse aufgeteilt. Diese Prozesse werden ganz einfach einzeln im Anwendungsteil der Architektur implementiert und arbeiten jeweils nebenl"aufig.
 	\begin{center}
-		\includegraphics[width=0.15\textwidth]{pics/fsmprocesslogic}
+		\includegraphics[width=0.13\textwidth]{pics/fsmprocesslogic}
 	\end{center}
 	\begin{itemize}
-	\itemsep0em
+		\itemsep0em
 		\item Prozess F = Output\_Logic (reine Logik)
 		\item Prozess G = Next\_State\_Logic (reine Logik)
 		\item Prozess Z = State\_Register (Logik mit Speicher)
 	\end{itemize}
+
+	\paragraph{Output\_Logic}
+	Dieser kombinatorische Teil ist abhängig von der Struktur der FSM. Häufig Case für State und If / elsif für Inputs (Mealy).
+	\lstinputlisting[language=vhdl,tabsize=2]{code/outputlogic.vhd}
 \end{multicols}
 
 \begin{multicols}{2}
-	\paragraph{Output\_Logic}
-		Dieser kombinatorische Teil ist abhängig von der Struktur der FSM. Häufig Case für State und If / elsif für Inputs (bei Mealy).
-		\lstinputlisting[language=vhdl,tabsize=2]{code/outputlogic.vhd}
+	\paragraph{Next\_State\_Logic} 
+	Dieser kombinatorische Teil ist nicht abh"angig von der Struktur der FSM.
+	\lstinputlisting[language=vhdl,tabsize=2]{code/nextstatelogic.vhd}
 	\vfill\null
 	\columnbreak
-	\paragraph{Next\_State\_Logic} 
-		Dieser kombinatorische Teil ist nicht abh"angig von der Struktur der FSM.
-		\lstinputlisting[language=vhdl,tabsize=2]{code/nextstatelogic.vhd}
-\end{multicols}
-
-\begin{multicols}{2}
 	\paragraph{State\_Register}  
 	Dieser kombinatorische Teil ist nicht abh"angig von der Struktur der 
 	FSM und sieht bei allen (fast) FSM immer gleich aus.
 	\lstinputlisting[language=vhdl,tabsize=2]{code/stateregister.vhd}
-					
+\end{multicols}
+
+\begin{multicols}{2}
+
 	\subsection{IEEE 1164 Logiksystem}
-	Durch Einbinden der ieee.std\_logic\_1164 Library werden die std\_logic, sowie std\_ulogic Datentypen verf"ugbar. Damit verbunden ist auch die 9-wertige Logik:
-	\includegraphics[width=0.49\textwidth]{pics/ieee1164logicsystem}
+	Die ieee.std\_logic\_1164 Library enthält die std\_logic, sowie std\_ulogic Datentypen. 9-wertige Logik:
+	\includegraphics[width=0.45\textwidth]{pics/ieee1164logicsystem}
+	\vfill\null
+	\columnbreak
+	Ebenfalls in der ieee.std\_logic\_1164 Library sind folgende Typenkonversionen enthalten:
+	\begin{center}
+		\includegraphics[width=0.48\textwidth]{pics/typeconversion}
+	\end{center}
 \end{multicols}
 		
 \begin{multicols}{2}
-	\subsubsection{Datentypenkonversion}
-		Ebenfalls in der ieee.std\_logic\_1164 Library sind folgende Typenkonversionen 
-		enthalten:
-		\begin{center}
-			\includegraphics[width=0.48\textwidth]{pics/typeconversion}
-		\end{center}
+	\subsubsection{TriStateLogic}
+	\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
 	\vfill\null
 	\columnbreak
-	\paragraph{TriStateLogic}
-	\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
-\end{multicols}
-	
-\subsection{Arithmetik}
-	\begin{minipage}{0.65\linewidth}
+	\subsection{Arithmetik}
+	\begin{minipage}{0.4\linewidth}
 		Durch zus"atzliches Einbinden der ieee.numeric\_std neben ieee.std\_logic\_1164 stehen signed und unsigned Datentypen auf Basis des std\_logic\_vector Datentyps, sowie arithmetische Operatoren und Vergleichsfunktionen zur Verf"ugung.
-		\begin{center}
-		\includegraphics[width=0.45\linewidth]{pics/arithvergleich}
-		\end{center}
 	\end{minipage}
-	\hspace{0.05\linewidth}
-	\begin{minipage}{0.25\linewidth}
+	\begin{minipage}{0.55\linewidth}
 		\includegraphics[width=\linewidth]{pics/arithoperator}
 	\end{minipage}
-
+	% Bild 'Arithvergleich' ist aus Formatierungsgründen in nächstem Abschnitt eingefügt.
+\end{multicols}
+	
 \begin{multicols}{2}
 	\subsection{Simulation}
 	\subsubsection{Aufbau einer Test-Bench}
-	Die Test-Bench soll wiederverwertbar sein, ist jedoch nicht synthesefähig. Arbeitet nach dem Delta-time-Modus. (Event queue definiert die Events). Normales VHDL Modul bestehend aus:
+	Die Test-Bench soll wiederverwertbar sein, ist jedoch nicht synthesefähig. Arbeitet nach Delta-time-Prinzip. (Event queue definiert Events). Normales VHDL Modul bestehend aus:
 	\begin{itemize}
 	\itemsep0em
 		\item library
@@ -262,6 +250,11 @@ Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuwei
 			\item (Timing-Informationen als Konstante (oder 
 				Generic) deklarieren)
 			\item Signale deklarieren (Benennung: $<$DUT\_SIG$>$\_tb)
+			\item[\-] % Bild gehört zu vorhergehendem Abschnitt 'Arithmetik', aus Formatierungsgründen ist es hier eingefügt.
+				\begin{minipage}{\linewidth}
+					\includegraphics[width=\linewidth]{pics/arithvergleich}
+				\end{minipage}
+			\item[\-]
 			\item Instanzierung des DUT
 			\item Prozess für Clock-Erzeugung
 			\item Prozess für die Anwendung von Stimuli 
@@ -309,22 +302,25 @@ Alle Signalzuweisungen und alle Prozesse laufen parallel zueinander. Signalzuwei
 		\item $\Delta$-Time $\rightarrow$ funktioneller Zusammenhang 
 			zwischen Ursache/Wirkung (automatisch)
 		\item inertial delay (Tr"agheit) $\rightarrow$ Ausgang "andert erst, wenn Eingang l"anger konstant bleibt als mit \textbf{after} definiert (Nicht verwenden f"ur Verz"ogerungszeit)
-		\vfill\null
-		\columnbreak
+%		\vfill\null
+%		\columnbreak
 		\lstinputlisting[language=vhdl,tabsize=2]
 				{code/inertial.vhd}
 		\item transport delay $\rightarrow$ Ausgang "andert nach Eingans"anderung mit \textbf{after} definierter Zeit 
 			\lstinputlisting[language=vhdl,tabsize=2]{code/transport.vhd}
+		\vfill\null
+		\columnbreak	
+		\subsection{Generic}
+		$\rightarrow$ Re-Use! So kann VHDL Parameter an ein Modell 
+		"ubergeben.\ Dabei wird der Parameter wie eine Konstante im Anweisungsteil verwendet.\\
+		Daf"ur muss in jeder Schnittstellenbeschreibung der Generic-Block eingbaut werden:
+		\lstinputlisting[language=vhdl,tabsize=2]{code/generic.vhd}
+		Und bei der Instanzierung wird mit generic map der Parameter-Wert gesetzt.
 	\end{itemize}
 \end{multicols}
 	
 \begin{multicols}{2}
-	\subsection{Generic}
-	$\rightarrow$ Re-Use! So kann VHDL Parameter an ein Modell 
-	"ubergeben.\ Dabei wird der Parameter wie eine Konstante im Anweisungsteil verwendet.\\
-	Daf"ur muss in jeder Schnittstellenbeschreibung der Generic-Block eingbaut werden:
-	\lstinputlisting[language=vhdl,tabsize=2]{code/generic.vhd}
-	Und bei der Instanzierung wird mit generic map der Parameter-Wert gesetzt.
+
 
 	\subsubsection{Beispiel für Implementation}
 	Die Implementation geschieht wie auch bei den anderen 
