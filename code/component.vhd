@@ -1,5 +1,4 @@
 component <COMPONENT_NAME>
 	port(
-		{<PORT_NAME>: <mode> <type>;}
-		);
+		{<PORT_NAME>: <mode> <type>;});
 end component;
