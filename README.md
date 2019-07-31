@@ -1,6 +1,6 @@
 # DigDes
 
-Stand FS 2018
+Stand FS 2019
 
 Auf Basis der Formelsammlung DT2 - Version CG-SK
 

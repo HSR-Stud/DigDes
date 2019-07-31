@@ -217,18 +217,18 @@ Häufige architecture\_names:
 \end{multicols}
 
 \begin{multicols}{2}
-
 	\subsection{IEEE 1164 Logiksystem}
 	Die ieee.std\_logic\_1164 Library enthält die std\_logic, sowie std\_ulogic Datentypen. 9-wertige Logik:
 	\includegraphics[width=0.45\textwidth]{images/ieee1164logicsystem}
+	
 	\vfill\null
 	\columnbreak
 	\subsubsection{TriStateLogic}
 	\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
 \end{multicols}
-		
+
 \begin{multicols}{2}
-	In der ieee.numeric\_std Library sind folgende Typenkonversionen enthalten:
+	\subsection{Type-Casting/-Conversion}
 	\begin{center}
 		\includegraphics[width=0.37\textwidth]{images/typeConversions}
 	\end{center}
@@ -245,6 +245,15 @@ Häufige architecture\_names:
 \end{multicols}
 \vspace{-3\baselineskip}
 \begin{multicols}{2}
+\subsection{resize}
+	Vektoren vom Typ unsigned und signed können auf gewünschte Länge gebracht werden.
+	\lstinputlisting[language=vhdl, tabsize=2]{code/resize.vhd}
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{images/arithvergleich}
+	\end{center}
+\end{multicols}
+\vspace{-2\baselineskip}
+\begin{multicols}{2}
 	\subsection{Simulation}
 	\subsubsection{Aufbau einer Test-Bench}
 	Die Test-Bench soll wiederverwertbar sein, ist jedoch nicht synthesefähig. Arbeitet nach Delta-time-Prinzip. (Event queue definiert Events). Normales VHDL Modul bestehend aus:
@@ -260,13 +269,6 @@ Häufige architecture\_names:
 			\item (Timing-Informationen als Konstante (oder 
 				Generic) deklarieren)
 			\item Signale deklarieren (Benennung: $<$DUT\_SIG$>$\_tb)
-			\item[\-] % Bild gehört zu vorhergehendem Abschnitt 'Arithmetik', aus Formatierungsgründen ist es hier eingefügt.
-		\end{itemize}
-		\begin{center}
-			\includegraphics[width=0.4\textwidth]{images/arithvergleich}
-		\end{center}
-		\begin{itemize}
-			\setlength\itemsep{-0.5em}
 			\item Instanzierung des DUT
 			\item Prozess für Clock-Erzeugung
 			\item Prozess für die Anwendung von Stimuli 
