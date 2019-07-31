@@ -47,16 +47,16 @@
 		ieee & std\_logic\_1164: Datentypen f"ur mehrwertiges Logiksystem\\
 		& numeric\_std: Mathe-Bibliothek f"ur std\_logic
 	\end{tabular}
+	Mit \textbf{use} wird Bibliotheksinhalt im ganzen VHDL Modul sichtbar.
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.3\textwidth}
 	\lstinputlisting[language=VHDL,tabsize=2]{code/header.vhd}
-	Mit \textbf{use} wird Bibliotheksinhalt im ganzen VHDL Modul sichtbar
 \end{minipage}
 
 \subsection{Schnittstellenbeschreibung (entity)}
 	Die einzelnen Bl"ocke einer VHDL-Beschreibung kommunizieren "uber ihre 
-	Schnittstellen miteinander. Die Kommunikationskan"ale nach aussen sind die sogenannten Ports. F"ur diese werden in der Schnittstellenbeschreibung Name, Signalflussrichtung und Datentyp festgelegt. Mit der Signalflussrichtung werden Eing"ange (IN), Ausg"ange (OUT) und bidirektionale Ports (INOUT) unterschieden.
+	Schnittstellen miteinander. Die Kommunikationskan"ale nach aussen sind sogenannte Ports. F"ur diese werden in der Schnittstellenbeschreibung Name, Signalflussrichtung und Datentyp festgelegt. Mit der Signalflussrichtung werden Eing"ange, Ausg"ange und bidirektionale Ports unterschieden.
 	\vspace{-\baselineskip}
 	\begin{multicols}{2}
 		\lstinputlisting[language=vhdl,tabsize=2]{code/entity.vhd}
@@ -80,8 +80,8 @@
 		bit\_vector: & eindimensionaler Array von bits\\
 		integer & interne Darstellung mit 32bit,\\
 		& Range-Einschr"ankung n"otig!\\
-		std\_logic(\_vector) & wie bit(\_vector), f"ur mehrwertige Logik\\
-		std\_ulogic(\_vetor) & wie std\_logic, nur f"ur einen Treiber\\
+		std\_logic(\_vector) & wie bit(\_vector), f"ur einen Treiber\\
+		std\_ulogic(\_vector) & '', aber Fehler bei mehreren Treibern\\
 	\end{tabular}
 \end{multicols}
 	
@@ -91,14 +91,24 @@
 	\lstinputlisting[language=VHDL,tabsize=2]{code/architecture.vhd}
 	\vfill\null
 	\columnbreak
-
 	\subsubsection{Signaldeklaration}
 	 Hier werden die Signale, die Innerhalb der Architektur verwendet werden, deklariert.
 	\lstinputlisting[language=vhdl,tabsize=2]{code/signal.vhd}
-
 	\subsubsection{Komponentendeklaration}
 		Mit Hilfe des Schl"usselwortes \textbf{component} erfolgt die Deklaration von Komponenten, "ahnlich wie einer \textbf{entity}.\\
 		\lstinputlisting[language=vhdl,tabsize=2]{code/component.vhd}
+\end{multicols}%
+\vspace{-2\baselineskip}
+\begin{multicols}{2}
+Häufige architecture\_names:
+\begin{itemize}
+	\setlength\itemsep{-0.5em}
+	\item behavioral (Verhaltensbeschreibung einer Designeinheit)
+	\item RTL (Register Transfer Level)
+	\item Dataflow (Netzliste mit booleschen Operatoren)
+	\item Structural (Strukturbeschreibung einer Designeinheit)
+	\item Tb (Test-Bench)
+\end{itemize}
 \end{multicols}
 
 \vspace{-\baselineskip}
@@ -108,7 +118,7 @@
 	\paragraph{Strukturmodell (Instanzierung)}
 	Die Ein- und Ausgänge von Komponenten, die in einer Bibliothek abgelegt sind werden durch lokale Signale miteinander verbunden $\rightarrow$ Es entsteht eine Netzliste. 
 	\lstinputlisting[language=vhdl,tabsize=2]{code/instanzierung.vhd}
-	\columnbreak
+	%\columnbreak
 	\paragraph{Datenflussmodell}
 	Es werden logische Grundfunktionen verwendet.
 	Logikoperatoren f"ur bit, bit\_vector, boolean: \textbf{not, and, or, nand, nor, xor, xnor}. Wenn auf bit\_vector angewendet, dann muss Bitbreite von beiden Operanden gleich sein.
@@ -145,7 +155,7 @@
 		\item Alle Signale, die auf der rechten Seite einer Signalzuweisung stehen, gehören in Sensitivitätsliste.
 		\item Ohne Sensitivitätsliste nur in Simulation erlaubt.
 	\end{itemize}
-	\includegraphics[width=0.4\textwidth]{pics/syntaxprozess}
+	\includegraphics[width=0.4\textwidth]{images/syntaxprozess}
 	\vfill\null
 	\columnbreak
 	\subsubsection{Variablen}			
@@ -180,7 +190,7 @@
 	\subsubsection{FSM in 3-Prozess Struktur}
 	Die Zustandsmaschine wird in 3 Prozesse aufgeteilt. Diese Prozesse werden ganz einfach einzeln im Anwendungsteil der Architektur implementiert und arbeiten jeweils nebenl"aufig.
 	\begin{center}
-		\includegraphics[width=0.13\textwidth]{pics/fsmprocesslogic}
+		\includegraphics[width=0.13\textwidth]{images/fsmprocesslogic}
 	\end{center}
 	\begin{itemize}
 		\itemsep0em
@@ -210,18 +220,18 @@
 
 	\subsection{IEEE 1164 Logiksystem}
 	Die ieee.std\_logic\_1164 Library enthält die std\_logic, sowie std\_ulogic Datentypen. 9-wertige Logik:
-	\includegraphics[width=0.45\textwidth]{pics/ieee1164logicsystem}
+	\includegraphics[width=0.45\textwidth]{images/ieee1164logicsystem}
 	\vfill\null
 	\columnbreak
-	Ebenfalls in der ieee.std\_logic\_1164 Library sind folgende Typenkonversionen enthalten:
-	\begin{center}
-		\includegraphics[width=0.48\textwidth]{pics/typeconversion}
-	\end{center}
+	\subsubsection{TriStateLogic}
+	\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
 \end{multicols}
 		
 \begin{multicols}{2}
-	\subsubsection{TriStateLogic}
-	\lstinputlisting[language=vhdl,tabsize=2]{code/buscontrol.vhd}
+	In der ieee.numeric\_std Library sind folgende Typenkonversionen enthalten:
+	\begin{center}
+		\includegraphics[width=0.37\textwidth]{images/typeConversions}
+	\end{center}
 	\vfill\null
 	\columnbreak
 	\subsection{Arithmetik}
@@ -229,32 +239,34 @@
 		Durch zus"atzliches Einbinden der ieee.numeric\_std neben ieee.std\_logic\_1164 stehen signed und unsigned Datentypen auf Basis des std\_logic\_vector Datentyps, sowie arithmetische Operatoren und Vergleichsfunktionen zur Verf"ugung.
 	\end{minipage}
 	\begin{minipage}{0.55\linewidth}
-		\includegraphics[width=\linewidth]{pics/arithoperator}
+		\includegraphics[width=\linewidth]{images/arithoperator}
 	\end{minipage}
 	% Bild 'Arithvergleich' ist aus Formatierungsgründen in nächstem Abschnitt eingefügt.
 \end{multicols}
-	
+\vspace{-3\baselineskip}
 \begin{multicols}{2}
 	\subsection{Simulation}
 	\subsubsection{Aufbau einer Test-Bench}
 	Die Test-Bench soll wiederverwertbar sein, ist jedoch nicht synthesefähig. Arbeitet nach Delta-time-Prinzip. (Event queue definiert Events). Normales VHDL Modul bestehend aus:
 	\begin{itemize}
-	\itemsep0em
+	\setlength\itemsep{-0.5em}
 		\item library
 		\item entity (i.d.R. ohne Ports nach aussen) $\rightarrow$ leer
 		\item architecture
 		\begin{itemize}
-			\itemsep0em
+			\setlength\itemsep{-0.5em}
 			\item Komponenten (DUT) Deklerationen
 			\item ggf. Auswahl der DUT-Architektur
 			\item (Timing-Informationen als Konstante (oder 
 				Generic) deklarieren)
 			\item Signale deklarieren (Benennung: $<$DUT\_SIG$>$\_tb)
 			\item[\-] % Bild gehört zu vorhergehendem Abschnitt 'Arithmetik', aus Formatierungsgründen ist es hier eingefügt.
-				\begin{minipage}{\linewidth}
-					\includegraphics[width=\linewidth]{pics/arithvergleich}
-				\end{minipage}
-			\item[\-]
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.4\textwidth]{images/arithvergleich}
+		\end{center}
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
 			\item Instanzierung des DUT
 			\item Prozess für Clock-Erzeugung
 			\item Prozess für die Anwendung von Stimuli 
@@ -315,7 +327,9 @@
 		"ubergeben.\ Dabei wird der Parameter wie eine Konstante im Anweisungsteil verwendet.\\
 		Daf"ur muss in jeder Schnittstellenbeschreibung der Generic-Block eingbaut werden:
 		\lstinputlisting[language=vhdl,tabsize=2]{code/generic.vhd}
-		Und bei der Instanzierung wird mit generic map der Parameter-Wert gesetzt.
+		Bei der Instanzierung wird mit generic map der Parameter-Wert gesetzt.\\
+		Der generic-Parameter wird zur Compile-Zeit fixiert.
+		\vfill\null
 	\end{itemize}
 \end{multicols}
 	
