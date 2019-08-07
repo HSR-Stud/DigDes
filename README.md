@@ -4,6 +4,7 @@ Stand FS 2019
 
 Auf Basis der Formelsammlung DT2 - Version CG-SK
 
-Erlaubte Unterlagen:
-- 4 Seiten A4, ohne Hilfsmittel lesbar (ausdrucken auf A5)
-- VHDL Quick Reference ohne Kommentare
+[![Build Status](https://travis-ci.org/n04hk/DigDes.svg?branch=master)](https://travis-ci.org/n04hk/DigDes)
+
+## License
+CC by-nc-sa
