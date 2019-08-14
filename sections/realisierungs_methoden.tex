@@ -4,17 +4,19 @@
 \section{Realisierungs-Methoden}
 \subsection{ROM}
 Mit einem ROM lassen sich rein kombinatorische Schaltungen in Form einer Look-Up-Table realisieren.
+\vspace{-\topsep}
 \begin{itemize}
 	\setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
-  
+ 	\setlength{\parskip}{0pt}
+  	\setlength{\parsep}{0pt}
 	\item Eingangsvariablen = Adresse
 	\item Speicherwert = Ausgang (programmierbar)
 \end{itemize}
+\vspace{-\topsep}
 
 \subsection{PLD}
 Programmierbares Device aus AND- und OR-Matrix, mindestens eine Matrix programmierbar.
+\vspace{-\topsep}
 \begin{itemize}
 	\setlength{\itemsep}{1pt}
 	\setlength{\parskip}{0pt}
@@ -24,6 +26,7 @@ Programmierbares Device aus AND- und OR-Matrix, mindestens eine Matrix programmi
 	\item PLA $\rightarrow$ OR und AND Matrix frei programmierbar, Fuses
 	\item GAL $\rightarrow$ Wie PLA plus programmierbare Ausgangsnetzwerke (Tristate), EEPROM
 \end{itemize}
+\vspace{-\topsep}
 SPLD (Simple PLD): F"ur Funktionen die als DNF vorliegen geeignet, heute gr"osstenteils von CPLD und FPGA verdr"angt.
 
 \subsection{CPLD (Complex PLD)}
@@ -40,6 +43,7 @@ SPLD (Simple PLD): F"ur Funktionen die als DNF vorliegen geeignet, heute gr"osst
 \columnbreak
 \subsection{FPGA}
 2D-Array von Logikbl"ocken, die "uber Routing-Kanal und Schaltmatrizen miteinander und mit I/O verbunden werden.
+\vspace{-\topsep}
 \begin{itemize}
 	\setlength{\itemsep}{1pt}
 	\setlength{\parskip}{0pt}
@@ -47,8 +51,9 @@ SPLD (Simple PLD): F"ur Funktionen die als DNF vorliegen geeignet, heute gr"osst
 	
 	\item Logikblock (LogicCell) $\rightarrow$ Look-Up-Table mit D-FlipFlop, kann beliebige Funktionen ausführen
 	\item Schaltmatrizen $\rightarrow$ programmierbare Verbindungen
-	\item Makrozellen $\rightarrow$ Feste Funktionen wie z.B. Memory, Clock Management ...
+	\item Makrozellen $\rightarrow$ Feste Funktionen wie z.B. Memory, Clock Management
 \end{itemize}
+\vspace{-\topsep}
 Die Konfiguration wird im RAM gespeichert (flüchtig). D.h. bei jedem Boot muss der Code von einem Festspeicher geladen werden.
 
 \subsection{Semi-Custom-ASIC}
@@ -62,10 +67,12 @@ Die Konfiguration wird im RAM gespeichert (flüchtig). D.h. bei jedem Boot muss 
 	\item Gates k"onnen durch Verdrahtungskan"ale verbunden werden.
 	\item Standardfunktionen k"onnen mit IP (Intellectual-Property)-Cores implementiert werden.
 	\item In Mixed-Signal Arrays sind zus"atzlich spezifische Analogbauteile enthalten.
-\end{itemize}	
+\end{itemize}
+\vspace{-\topsep}
 
 \subsection{Full-Custom-ASIC}
-V"ollig kundenspezifische ASICs, oft werden IP-Cores f"ur Standardfunktionen verwendet. Digitale und analoge Komponenten auf einem IC m"oglich. Voll auf Anwendung anpassbare Eigenschaften (Stromverbrauch, Gr"osse, Geschwindigkeit etc.).
+V"ollig kundenspezifische ASICs, oft werden IP-Cores f"ur Standardfunktionen verwendet. Digitale und analoge Komponenten auf einem IC m"oglich. Voll auf Anwendung anpassbare Eigenschaften (Stromverbrauch, Gr"osse, Geschw. etc.).
+\vfill\null
 \end{multicols}
 \end{scriptsize}
 
@@ -91,12 +98,12 @@ V"ollig kundenspezifische ASICs, oft werden IP-Cores f"ur Standardfunktionen ver
 %\includegraphics[width=0.8\textwidth]{images/fpgastruct}
 
 \subsection{Vergleichstabelle}
-\begin{minipage}{0.41\textwidth}
-\includegraphics[width=0.99\textwidth]{images/devicecomparetables}
+\begin{minipage}{0.55\linewidth}
+\includegraphics[width=\textwidth]{images/devicecomparetables}
 \end{minipage}
 \hfill
-\begin{minipage}{0.58\textwidth}
-\includegraphics[width=0.7\textwidth]{images/abstraktion.png}
+\begin{minipage}{0.44\linewidth}
+\includegraphics[width=0.9\textwidth]{images/abstraktion.png}
 \end{minipage}
 
 \begin{tabular}{|l|c|c|c|c|c|c|}

@@ -80,8 +80,8 @@
 		bit\_vector: & eindimensionaler Array von bits\\
 		integer & interne Darstellung mit 32bit,\\
 		& Range-Einschr"ankung n"otig!\\
-		std\_logic(\_vector) & wie bit(\_vector), f"ur einen Treiber\\
-		std\_ulogic(\_vector) & '', aber Fehler bei mehreren Treibern\\
+		std\_logic(\_vector) & wie bit(\_vector), aber f"ur einen Treiber\\
+		std\_ulogic(\_vector) & '', aber für mehrwertige Logik\\
 	\end{tabular}
 \end{multicols}
 	
@@ -160,12 +160,15 @@ Häufige architecture\_names:
 	\columnbreak
 	\subsubsection{Variablen}			
 	\begin{itemize}
-		\itemsep0em
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{0pt}
+		\setlength{\parsep}{0pt}
 		\item Variablen werden im Deklarationsteil des Prozesses deklariert und sind nur in diesem Prozess sichtbar.
 		\item Zugewiesener Wert kann sofort abgefragt werden
 		\item Wertzuweisung durch Operator \textbf{:=} (nicht $<$=)
 		\item Vor Verwendung einen aktuellen Wert (evtl. Default-Wert) zuweisen, sonst entsteht ein Latch.
 	\end{itemize}
+	\vspace{-\baselineskip}
 	\lstinputlisting[language=vhdl,tabsize=2]{code/variable.vhd}
 		
 	\subsubsection{Signalzuweisung durch Prozesse}
@@ -257,6 +260,7 @@ Häufige architecture\_names:
 	\subsection{Simulation}
 	\subsubsection{Aufbau einer Test-Bench}
 	Die Test-Bench soll wiederverwertbar sein, ist jedoch nicht synthesefähig. Arbeitet nach Delta-time-Prinzip. (Event queue definiert Events). Normales VHDL Modul bestehend aus:
+	\vspace{-\topsep}
 	\begin{itemize}
 	\setlength\itemsep{-0.5em}
 		\item library
