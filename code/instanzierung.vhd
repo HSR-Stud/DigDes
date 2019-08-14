@@ -1,10 +1,9 @@
 -- Implizite form:
 [identifier]: component_name
 	port map(signal1, signal2, signal3);
--- Zuweisung entspr. Reihenfolge von 
--- Auflistung in Entity des Komponenten 
+-- Zuweisung entspr. Reihenfolge von Auflistung
+-- in Entity der Komponente
 
-	
 --Explizite form:
 [identifier]: component_name
 	port map(

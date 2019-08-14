@@ -9,6 +9,6 @@ Response: process
     ...
     [wait;] -- Wiederkehrend, oder nur einfach
   end process;
-  
---Assert im allgemeinen (ist condition = false, so wird assert angezeigt)
+
+--Assert im Allgemeinen (condition = false, assert wird angezeigt)
 assert <condition> [report <"str_expression">] [severity note|warning|error|failure];
