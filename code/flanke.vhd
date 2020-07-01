@@ -1,7 +1,7 @@
 --Erfassen einer positiven Flanke 
---    des Signals CLK
 if CLK'event and CLK = '1' then ...
+if rising_edge(clk) then ... --std_logic/std_ulogic
 
 --Erfassen einer negativen Flanke 
---    des Signals CLK
 if CLK'event and CLK = '0' then ...
+if falling_edge(clk) then ... --std_logic/std_ulogic
